@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kích hoạt bảo hành điện tử | Ánh Dương Smart Car</title>
+  <meta name="description" content="Kích hoạt bảo hành điện tử Ánh Dương Smart Car cho Android Box, HUD và phụ kiện xe hơi. Bảo hành 24 tháng, hỗ trợ kỹ thuật từ xa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/logo-ad-circle.png" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header product-site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Ánh Dương Smart Car">
+        <span class="brand-mark brand-logo"><img src="assets/logo-ad-circle.png" alt="Logo Ánh Dương"></span>
+        <span class="brand-text">Ánh Dương<br><b>Thiết bị thông minh cho ô tô</b></span>
+      </a>
+      <nav class="menu">
+        <a href="index.html#san-pham">Sản phẩm</a>
+        <a href="index.html#huong-dan">Hướng dẫn</a>
+        <a href="bao-hanh.html">Bảo hành</a>
+        <a href="index.html#lien-he">Liên hệ</a>
+        <a href="https://www.facebook.com/profile.php?id=61573552418093" target="_blank" rel="noopener">Facebook</a>
+      </nav>
+      <div class="header-order"><strong>Tư vấn / Đặt hàng</strong><span>+84 961 918 777</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="warranty-hero">
+      <div class="container warranty-hero-grid">
+        <div>
+          <p class="eyebrow">Bảo hành điện tử QR</p>
+          <h1>Kích hoạt bảo hành sản phẩm Ánh Dương</h1>
+          <p class="lead">Khách hàng quét mã QR trên tem, điền thông tin mua hàng và lưu lại để Ánh Dương hỗ trợ bảo hành, cài đặt và xử lý lỗi kỹ thuật từ xa.</p>
+          <div class="trust-row">
+            <span>Bảo hành 24 tháng</span>
+            <span>Tra cứu bằng SĐT / serial</span>
+            <span>Hỗ trợ Zalo từ xa</span>
+          </div>
+        </div>
+        <div class="qr-demo-card">
+          <div class="qr-demo">
+            <img src="assets/logo-ad-circle.png" alt="Logo Ánh Dương">
+          </div>
+          <h3>Tem QR bảo hành</h3>
+          <p>QR trên hộp hoặc sản phẩm dẫn về trang này để kích hoạt bảo hành.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section warranty-lookup-section">
+      <div class="container warranty-lookup-layout">
+        <div class="warranty-lookup-card">
+          <p class="eyebrow">Tra cứu bảo hành</p>
+          <h2>Nhập số điện thoại hoặc mã serial</h2>
+          <p class="form-note">Khách đã kích hoạt bảo hành có thể nhập SĐT/Zalo, mã serial, mã tem hoặc mã đơn COD để xem lại thông tin bảo hành và cách liên hệ hỗ trợ.</p>
+          <form id="lookupForm" class="lookup-form">
+            <input id="lookupInput" type="text" placeholder="Ví dụ: 0961918777 hoặc AD-0001" required>
+            <button class="btn" id="lookupSubmitBtn" type="submit">Tra cứu bảo hành</button>
+          </form>
+          <div id="lookupResult" class="lookup-result" hidden></div>
+          <div id="lookupError" class="warranty-error" hidden>Không tìm thấy thông tin. Vui lòng kiểm tra lại SĐT/serial hoặc liên hệ Ánh Dương để được hỗ trợ.</div>
+        </div>
+
+        <div class="warranty-contact-card">
+          <p class="eyebrow">Liên hệ bảo hành</p>
+          <h3>Khi sản phẩm cần hỗ trợ</h3>
+          <p>Gửi cho Ánh Dương: số điện thoại mua hàng, mã serial/mã tem, dòng xe đang dùng, ảnh/video lỗi nếu có.</p>
+          <div class="contact-warranty-actions">
+            <a class="btn" href="https://zalo.me/0961918777" target="_blank" rel="noopener">Chat Zalo bảo hành</a>
+            <a class="btn btn-ghost dark-ghost" href="tel:0961918777">Gọi kỹ thuật</a>
+            <a class="btn btn-ghost dark-ghost" href="https://www.facebook.com/profile.php?id=61573552418093" target="_blank" rel="noopener">Facebook Shop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container warranty-layout">
+        <div class="warranty-form-card">
+          <p class="eyebrow">Thông tin kích hoạt</p>
+          <h2>Điền thông tin bảo hành</h2>
+          <p class="form-note">Sau khi điền, bấm nút kích hoạt bảo hành. Thông tin sẽ được lưu vào Google Sheet của Ánh Dương và hiển thị thông báo kích hoạt thành công.</p>
+
+          <form id="warrantyForm" class="warranty-form">
+            <input name="source" type="hidden" value="Website bảo hành Ánh Dương">
+            <label>Họ tên khách hàng
+              <input name="name" type="text" placeholder="Ví dụ: Nguyễn Văn A" required>
+            </label>
+            <label>Số điện thoại / Zalo
+              <input name="phone" type="tel" placeholder="Ví dụ: 0961 918 777" required>
+            </label>
+            <label>Dòng xe / đời xe
+              <input name="car" type="text" placeholder="Ví dụ: Hyundai Accent 2018">
+            </label>
+            <label>Sản phẩm đã mua
+              <select name="product">
+                <option>Android Box MTK 6765 3GB/32GB</option>
+                <option>Android Box MTK 6765 4GB/64GB</option>
+                <option>Android Box Qualcomm 4GB/64GB</option>
+                <option>Android Box Qualcomm 8GB/128GB</option>
+                <option>HUD / phụ kiện khác</option>
+              </select>
+            </label>
+            <label>Mã serial / mã tem / mã đơn hàng
+              <input name="serial" type="text" placeholder="Nhập mã trên tem hoặc mã đơn COD">
+            </label>
+            <label>Ngày mua hàng
+              <input name="date" type="date">
+            </label>
+            <label>Ghi chú thêm
+              <textarea name="note" rows="4" placeholder="Ví dụ: mua qua Facebook, cần hỗ trợ cài Vietmap..."></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn" id="warrantySubmitBtn" type="submit">Kích hoạt bảo hành</button>
+              <a class="btn btn-ghost dark-ghost" href="tel:0961918777">Gọi hỗ trợ</a>
+              <a class="btn btn-ghost dark-ghost" href="https://www.facebook.com/profile.php?id=61573552418093" target="_blank" rel="noopener">Facebook Shop</a>
+            </div>
+          </form>
+          <div id="warrantySuccess" class="warranty-success" hidden>
+            <b>Cảm ơn bạn đã kích hoạt bảo hành thành công.</b>
+            <span>Ánh Dương đã nhận thông tin. Khi cần hỗ trợ, vui lòng liên hệ Zalo/điện thoại 0961 918 777 hoặc Facebook Shop.</span>
+          </div>
+          <div id="warrantyError" class="warranty-error" hidden>
+            Chưa kết nối được Google Sheet. Vui lòng thử lại hoặc liên hệ Ánh Dương qua Zalo/điện thoại.
+          </div>
+        </div>
+
+        <aside class="warranty-policy-card">
+          <h3>Chính sách bảo hành</h3>
+          <div class="policy-item"><b>Thời gian bảo hành</b><span>24 tháng kể từ ngày mua hoặc ngày kích hoạt.</span></div>
+          <div class="policy-item"><b>Hỗ trợ kỹ thuật</b><span>Hướng dẫn cài đặt, kết nối xe, bản đồ, YouTube và xử lý lỗi từ xa qua Zalo/điện thoại.</span></div>
+          <div class="policy-item"><b>Thông tin cần lưu</b><span>Số điện thoại mua hàng, mã serial/mã tem và ảnh sản phẩm khi cần đối chiếu.</span></div>
+          <div class="policy-item"><b>Không bảo hành</b><span>Rơi vỡ, vào nước, cháy nổ do nguồn điện bất thường, tự ý tháo sửa hoặc làm mất tem.</span></div>
+          <div class="support-box">
+            <b>Cần hỗ trợ nhanh?</b>
+            <a href="https://zalo.me/0961918777" target="_blank" rel="noopener">Chat Zalo 0961 918 777</a>
+            <a href="https://www.facebook.com/profile.php?id=61573552418093" target="_blank" rel="noopener">Facebook Shop Ánh Dương</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Quy trình xử lý</p>
+          <h2>Bảo hành đơn giản, dễ tra cứu.</h2>
+        </div>
+        <div class="cards three">
+          <article class="card"><h3>1. Quét QR</h3><p>Khách quét tem QR trên hộp hoặc trên sản phẩm để vào trang kích hoạt bảo hành.</p></article>
+          <article class="card"><h3>2. Lưu thông tin</h3><p>Ánh Dương lưu số điện thoại, sản phẩm, serial và ngày mua để tra cứu khi khách cần hỗ trợ.</p></article>
+          <article class="card"><h3>3. Hỗ trợ từ xa</h3><p>Khi có lỗi, khách liên hệ Zalo/điện thoại. Ánh Dương kiểm tra trước, hướng dẫn xử lý hoặc tiếp nhận bảo hành.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating-contact" aria-label="Liên hệ nhanh">
+    <a class="float-btn zalo" href="https://zalo.me/0961918777" target="_blank" rel="noopener">Chat Zalo</a>
+    <a class="float-btn phone" href="tel:0961918777">Gọi mua hàng</a>
+    <a class="float-btn messenger" href="https://www.facebook.com/profile.php?id=61573552418093" target="_blank" rel="noopener">Facebook Shop</a>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><b>Ánh Dương Smart Car</b><br><span>Thiết bị thông minh cho ô tô.</span><br><a class="footer-link" href="https://www.facebook.com/profile.php?id=61573552418093" target="_blank" rel="noopener">Facebook Shop Ánh Dương</a></div>
+      <div>© 2026 Ánh Dương Smart Car. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Dán link Google Apps Script Web App vào đây để form tự lưu vào Google Sheet.
+    // Xem file HUONG-DAN-KET-NOI-GOOGLE-SHEET.txt trong thư mục web.
+    const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwI76JD31zslUU41SdviPnzEQB6ky8EE507V5FnREwXL-n-8EtX37I7T7ZcbJEkOzDt/exec';
+
+    const form = document.getElementById('warrantyForm');
+    const submitBtn = document.getElementById('warrantySubmitBtn');
+    const successBox = document.getElementById('warrantySuccess');
+    const errorBox = document.getElementById('warrantyError');
+    const lookupForm = document.getElementById('lookupForm');
+    const lookupInput = document.getElementById('lookupInput');
+    const lookupSubmitBtn = document.getElementById('lookupSubmitBtn');
+    const lookupResult = document.getElementById('lookupResult');
+    const lookupError = document.getElementById('lookupError');
+
+    function cleanPhone(value) {
+      return String(value || '').replace(/[^0-9]/g, '');
+    }
+
+    function addMonths(date, months) {
+      const d = new Date(date);
+      if (Number.isNaN(d.getTime())) return null;
+      d.setMonth(d.getMonth() + months);
+      return d;
+    }
+
+    function formatDate(value) {
+      if (!value) return 'Chưa có thông tin';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return value;
+      return d.toLocaleDateString('vi-VN');
+    }
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>'"]/g, function (c) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[c];
+      });
+    }
+
+    function warrantyStatusText(buyDate) {
+      const start = buyDate ? new Date(buyDate) : null;
+      if (!start || Number.isNaN(start.getTime())) return { text: 'Đã kích hoạt, cần đối chiếu ngày mua', className: 'pending', endText: 'Chưa có thông tin' };
+      const end = addMonths(start, 24);
+      const active = end && end.getTime() >= Date.now();
+      return {
+        text: active ? 'Còn bảo hành' : 'Hết hạn bảo hành',
+        className: active ? 'active' : 'expired',
+        endText: formatDate(end)
+      };
+    }
+
+    function renderLookupResult(data) {
+      const status = warrantyStatusText(data.ngayMua || data.date);
+      lookupResult.innerHTML = `
+        <div class="lookup-status ${status.className}">${status.text}</div>
+        <div class="lookup-grid">
+          <span>Khách hàng</span><b>${escapeHtml(data.hoTen || data.name || 'Chưa có thông tin')}</b>
+          <span>Số điện thoại</span><b>${escapeHtml(data.soDienThoai || data.phone || 'Chưa có thông tin')}</b>
+          <span>Sản phẩm</span><b>${escapeHtml(data.sanPham || data.product || 'Chưa có thông tin')}</b>
+          <span>Serial / mã tem</span><b>${escapeHtml(data.serial || 'Chưa có thông tin')}</b>
+          <span>Ngày mua / kích hoạt</span><b>${formatDate(data.ngayMua || data.date)}</b>
+          <span>Hạn bảo hành đến</span><b>${status.endText}</b>
+        </div>
+        <div class="lookup-help">
+          <b>Cần bảo hành hoặc hỗ trợ cài đặt?</b>
+          <p>Chụp ảnh/video lỗi, gửi kèm mã serial hoặc số điện thoại mua hàng để Ánh Dương kiểm tra nhanh hơn.</p>
+          <a class="btn" href="https://zalo.me/0961918777" target="_blank" rel="noopener">Chat Zalo 0961 918 777</a>
+          <a class="btn btn-ghost dark-ghost" href="tel:0961918777">Gọi kỹ thuật</a>
+        </div>`;
+      lookupResult.hidden = false;
+    }
+
+    function lookupWarranty(query) {
+      return new Promise((resolve, reject) => {
+        const callbackName = 'adWarrantyLookup_' + Date.now();
+        const script = document.createElement('script');
+        const timeout = setTimeout(() => {
+          cleanup();
+          reject(new Error('timeout'));
+        }, 12000);
+        function cleanup() {
+          clearTimeout(timeout);
+          delete window[callbackName];
+          if (script.parentNode) script.parentNode.removeChild(script);
+        }
+        window[callbackName] = function (response) {
+          cleanup();
+          resolve(response);
+        };
+        const url = new URL(GOOGLE_SHEET_WEB_APP_URL);
+        url.searchParams.set('action', 'lookup');
+        url.searchParams.set('q', query);
+        url.searchParams.set('callback', callbackName);
+        script.onerror = function () { cleanup(); reject(new Error('load error')); };
+        script.src = url.toString();
+        document.body.appendChild(script);
+      });
+    }
+
+    lookupForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      lookupResult.hidden = true;
+      lookupError.hidden = true;
+      const q = lookupInput.value.trim();
+      if (!q) return;
+      lookupSubmitBtn.disabled = true;
+      lookupSubmitBtn.textContent = 'Đang tra cứu...';
+      try {
+        const response = await lookupWarranty(q);
+        if (response && response.status === 'success' && response.data) {
+          renderLookupResult(response.data);
+        } else {
+          lookupError.hidden = false;
+        }
+      } catch (error) {
+        lookupError.textContent = 'Chưa tra cứu được dữ liệu. Vui lòng thử lại hoặc chat Zalo 0961 918 777.';
+        lookupError.hidden = false;
+      } finally {
+        lookupSubmitBtn.disabled = false;
+        lookupSubmitBtn.textContent = 'Tra cứu bảo hành';
+      }
+    });
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      successBox.hidden = true;
+      errorBox.hidden = true;
+
+      if (!GOOGLE_SHEET_WEB_APP_URL || GOOGLE_SHEET_WEB_APP_URL.includes('DAN_LINK_GOOGLE_APPS_SCRIPT')) {
+        errorBox.textContent = 'Form đã sẵn sàng, nhưng cần dán link Google Apps Script Web App để tự lưu vào Google Sheet.';
+        errorBox.hidden = false;
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Đang kích hoạt...';
+
+      try {
+        const formData = new FormData(form);
+        const payload = new URLSearchParams({
+          submitted_at: new Date().toLocaleString('vi-VN'),
+          source: formData.get('source') || 'Website bảo hành Ánh Dương',
+          name: formData.get('name') || '',
+          phone: formData.get('phone') || '',
+          car: formData.get('car') || '',
+          product: formData.get('product') || '',
+          serial: formData.get('serial') || '',
+          date: formData.get('date') || '',
+          note: formData.get('note') || ''
+        });
+
+        await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: payload.toString()
+        });
+
+        form.reset();
+        successBox.hidden = false;
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (error) {
+        errorBox.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Kích hoạt bảo hành';
+      }
+    });
+  </script>
+</body>
+</html>

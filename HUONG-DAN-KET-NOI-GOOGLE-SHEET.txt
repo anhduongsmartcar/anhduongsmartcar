@@ -1,0 +1,122 @@
+HƯỚNG DẪN KẾT NỐI FORM BẢO HÀNH VÀO GOOGLE SHEET
+
+1) Vào Google Drive tạo 1 Google Sheet mới.
+   Đặt tên ví dụ: Bao hanh dien tu Anh Duong
+
+2) Trong Google Sheet, vào Extensions / Tiện ích mở rộng -> Apps Script.
+
+3) Xóa code cũ và dán toàn bộ đoạn code dưới đây:
+
+----------------------------------------
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  ensureHeader_(sheet);
+
+  const p = e.parameter || {};
+  sheet.appendRow([
+    p.submitted_at || new Date(),
+    p.source || 'Website bảo hành Ánh Dương',
+    p.name || '',
+    p.phone || '',
+    p.car || '',
+    p.product || '',
+    p.serial || '',
+    p.date || '',
+    p.note || ''
+  ]);
+
+  return jsonOutput_({ status: 'success' }, p.callback);
+}
+
+function doGet(e) {
+  const p = e.parameter || {};
+  if (p.action !== 'lookup') {
+    return jsonOutput_({ status: 'ready' }, p.callback);
+  }
+
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  ensureHeader_(sheet);
+
+  const q = normalize_(p.q || '');
+  if (!q) return jsonOutput_({ status: 'not_found' }, p.callback);
+
+  const values = sheet.getDataRange().getValues();
+  for (let i = values.length - 1; i >= 1; i--) {
+    const row = values[i];
+    const phone = normalize_(row[3]);
+    const serial = normalize_(row[6]);
+    if ((phone && phone.includes(q)) || (serial && serial.includes(q)) || (q && q.includes(phone))) {
+      return jsonOutput_({
+        status: 'success',
+        data: {
+          submittedAt: row[0],
+          nguon: row[1],
+          hoTen: row[2],
+          soDienThoai: row[3],
+          dongXe: row[4],
+          sanPham: row[5],
+          serial: row[6],
+          ngayMua: row[7],
+          ghiChu: row[8]
+        }
+      }, p.callback);
+    }
+  }
+
+  return jsonOutput_({ status: 'not_found' }, p.callback);
+}
+
+function ensureHeader_(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow([
+      'Thời gian gửi',
+      'Nguồn',
+      'Họ tên',
+      'Số điện thoại / Zalo',
+      'Dòng xe / đời xe',
+      'Sản phẩm',
+      'Serial / Mã tem / Mã đơn',
+      'Ngày mua',
+      'Ghi chú'
+    ]);
+  }
+}
+
+function normalize_(value) {
+  return String(value || '').toLowerCase().replace(/[^0-9a-z]/g, '');
+}
+
+function jsonOutput_(obj, callback) {
+  const text = callback ? callback + '(' + JSON.stringify(obj) + ')' : JSON.stringify(obj);
+  return ContentService.createTextOutput(text).setMimeType(ContentService.MimeType.JAVASCRIPT);
+}
+----------------------------------------
+
+4) Bấm Save / Lưu.
+
+5) Bấm Deploy / Triển khai -> New deployment / Lần triển khai mới.
+   Chọn type: Web app.
+   Execute as / Thực thi với tư cách: Me / Tôi.
+   Who has access / Ai có quyền truy cập: Anyone / Bất kỳ ai.
+   Bấm Deploy.
+
+6) Google sẽ hỏi cấp quyền, bấm cho phép.
+
+7) Copy link Web App nhận được. Link thường có dạng:
+   https://script.google.com/macros/s/....../exec
+
+8) Mở file bao-hanh.html, tìm dòng:
+   const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwI76JD31zslUU41SdviPnzEQB6ky8EE507V5FnREwXL-n-8EtX37I7T7ZcbJEkOzDt/exec';
+
+   Thay phần trong dấu nháy bằng link Web App của bạn. Ví dụ:
+   const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycb.../exec';
+
+9) Upload lại web lên hosting.
+
+10) Test: vào trang bao-hanh.html, điền thử thông tin, bấm Kích hoạt bảo hành.
+    Nếu thành công, web hiện: Cảm ơn bạn đã kích hoạt bảo hành thành công.
+    Mở Google Sheet sẽ thấy dữ liệu mới tự vào.
+
+
+ĐÃ GẮN LINK WEB APP:
+https://script.google.com/macros/s/AKfycbwI76JD31zslUU41SdviPnzEQB6ky8EE507V5FnREwXL-n-8EtX37I7T7ZcbJEkOzDt/exec
